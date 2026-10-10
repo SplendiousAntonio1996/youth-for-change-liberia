@@ -1,0 +1,6 @@
+{
+  "name": "YOUTH for Change .INC",
+  "description": "Official interactive platform for YOUTH for Change .INC Liberia featuring the National Debate Championship, National STEM Challenge, Automated Coach Fixture Alerts, School Zoning & Anti-Bias Pairing, Alumni & Debaters Hub, Official Documents & PDF Portal, Results & Leaderboards, Multi-year Archives (2015-2025), Gallery, and News.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

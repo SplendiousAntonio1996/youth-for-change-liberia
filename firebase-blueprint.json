@@ -1,0 +1,528 @@
+{
+  "entities": {
+    "stories": {
+      "title": "Stories / News Articles",
+      "description": "Published news articles and updates for Youth For Change Liberia",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "date": { "type": "string" },
+        "readTime": { "type": "string" },
+        "category": { "type": "string" },
+        "source": { "type": "string" },
+        "author": { "type": "string" },
+        "image": { "type": "string" },
+        "summary": { "type": "string" },
+        "fullContent": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "authorUid": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "category", "author", "summary", "fullContent", "createdAt"]
+    },
+    "documents": {
+      "title": "Official Documents & Publications",
+      "description": "Official guides, toolkits, whitepapers, and forms uploaded by administrators",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "fileType": { "type": "string" },
+        "fileSize": { "type": "string" },
+        "publishDate": { "type": "string" },
+        "downloadCount": { "type": "number" },
+        "editionYear": { "type": "string" },
+        "authorOrDept": { "type": "string" },
+        "description": { "type": "string" },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "fileUrl": { "type": "string" },
+        "contentSections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "content": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            },
+            "required": ["title", "content"]
+          }
+        },
+        "authorUid": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "category", "authorOrDept", "description", "createdAt"]
+    },
+    "admins": {
+      "title": "Admin Users",
+      "description": "Authorized administrators with publication permissions",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["email", "role"]
+    },
+    "donations": {
+      "title": "Donations & Contributions",
+      "description": "Supporter contributions and sponsorship records for Youth For Change Liberia programs",
+      "type": "object",
+      "properties": {
+        "donorName": { "type": "string" },
+        "donorEmail": { "type": "string" },
+        "donorPhone": { "type": "string" },
+        "amount": { "type": "number" },
+        "currency": { "type": "string" },
+        "program": { "type": "string" },
+        "frequency": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "message": { "type": "string" },
+        "isAnonymous": { "type": "boolean" },
+        "countyOrLocation": { "type": "string" },
+        "status": { "type": "string" },
+        "transactionReference": { "type": "string" },
+        "authorUid": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["amount", "currency", "program", "paymentMethod", "transactionReference", "createdAt"]
+    },
+    "stemChallenges": {
+      "title": "National STEM Challenges",
+      "description": "Annual or active STEM challenge editions, themes, dates, prizes, and tracks uploaded by administrators",
+      "type": "object",
+      "properties": {
+        "edition": { "type": "string" },
+        "theme": { "type": "string" },
+        "tagline": { "type": "string" },
+        "deadline": { "type": "string" },
+        "grandExpoDate": { "type": "string" },
+        "location": { "type": "string" },
+        "prizes": { "type": "object" },
+        "tracks": { "type": "array" },
+        "eligibilityRules": { "type": "array" },
+        "howToAccomplishOverview": { "type": "string" },
+        "accomplishmentRoadmap": { "type": "array" },
+        "submissionGuidelines": { "type": "array" },
+        "requiredDeliverables": { "type": "array" },
+        "evaluationRubric": { "type": "array" },
+        "status": { "type": "string" },
+        "authorUid": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["edition", "theme", "deadline", "grandExpoDate", "location", "createdAt"]
+    },
+    "stemProposals": {
+      "title": "Student STEM Project Proposals",
+      "description": "Student project submissions and innovations received for the National STEM Challenge",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "school": { "type": "string" },
+        "county": { "type": "string" },
+        "category": { "type": "string" },
+        "teamLead": { "type": "string" },
+        "studentTeam": { "type": "array" },
+        "mentor": { "type": "string" },
+        "mentorEmail": { "type": "string" },
+        "mentorPhone": { "type": "string" },
+        "summary": { "type": "string" },
+        "problemStatement": { "type": "string" },
+        "solution": { "type": "string" },
+        "materialsBudget": { "type": "string" },
+        "prototypeStage": { "type": "string" },
+        "status": { "type": "string" },
+        "reviewerNotes": { "type": "string" },
+        "scoreTotal": { "type": "number" },
+        "submittedAt": { "type": "string" }
+      },
+      "required": ["title", "school", "county", "teamLead", "summary", "submittedAt"]
+    },
+    "galleryItems": {
+      "title": "Media Gallery & Key Events",
+      "description": "Photo albums, video match recordings, and key summit events uploaded by administrators",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string", "enum": ["photos", "videos", "events"] },
+        "editionYear": { "type": "string" },
+        "county": { "type": "string" },
+        "url": { "type": "string" },
+        "posterUrl": { "type": "string" },
+        "videoUrl": { "type": "string" },
+        "videoEmbedUrl": { "type": "string" },
+        "description": { "type": "string" },
+        "date": { "type": "string" },
+        "tag": { "type": "string" },
+        "duration": { "type": "string" },
+        "venue": { "type": "string" },
+        "eventTime": { "type": "string" },
+        "registrationLink": { "type": "string" },
+        "authorUid": { "type": "string" },
+        "authorEmail": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "lastVerifiedAt": { "type": "string" },
+        "isVerified": { "type": "boolean" }
+      },
+      "required": ["title", "category", "url", "description", "createdAt"]
+    },
+    "involvementApplications": {
+      "title": "Get Involved Applications & Registrations",
+      "description": "Applications submitted by high schools, student scholars, volunteers, judges, sponsors, and institutional partners",
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["school", "student", "volunteer", "sponsor", "partner"] },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "schoolOrOrg": { "type": "string" },
+        "county": { "type": "string" },
+        "roleOrInterest": { "type": "string" },
+        "message": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+        "reviewerNotes": { "type": "string" },
+        "gradeLevel": { "type": "string" },
+        "scholarshipInterest": { "type": "boolean" },
+        "careerAspiration": { "type": "string" },
+        "principalOrHead": { "type": "string" },
+        "delegationSize": { "type": "number" },
+        "sponsorshipTier": { "type": "string" },
+        "pledgedAmount": { "type": "number" },
+        "currency": { "type": "string" },
+        "partnerType": { "type": "string" },
+        "eventId": { "type": "string" },
+        "eventTitle": { "type": "string" },
+        "attendanceMode": { "type": "string" },
+        "submittedAt": { "type": "string" },
+        "reviewedAt": { "type": "string" },
+        "reviewedBy": { "type": "string" },
+        "logoText": { "type": "string" },
+        "accentColor": { "type": "string" },
+        "emailNotificationSent": { "type": "boolean" },
+        "lastEmailStatus": { "type": "string" },
+        "lastEmailSentAt": { "type": "string" }
+      },
+      "required": ["type", "name", "email", "phone", "county", "roleOrInterest", "submittedAt"]
+    },
+    "partners": {
+      "title": "Official Institutional Partners & Sponsors",
+      "description": "Accredited and approved institutional partners, government ministries, NGOs, and sponsors displayed on the official website",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "category": { "type": "string", "enum": ["Government", "International Agency", "Corporate", "Academic", "NGO", "Media"] },
+        "description": { "type": "string" },
+        "logoText": { "type": "string" },
+        "accentColor": { "type": "string" },
+        "websiteUrl": { "type": "string" },
+        "county": { "type": "string" },
+        "contactPerson": { "type": "string" },
+        "contactEmail": { "type": "string" },
+        "status": { "type": "string", "enum": ["approved", "active", "pending", "archived"] },
+        "applicationId": { "type": "string" },
+        "approvedAt": { "type": "string" },
+        "authorUid": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "category", "description", "logoText", "status", "createdAt"]
+    },
+    "debateEditions": {
+      "title": "National Debate Championship Editions",
+      "description": "Historical and upcoming tournament editions of the National Debate Championship",
+      "type": "object",
+      "properties": {
+        "year": { "type": "string" },
+        "title": { "type": "string" },
+        "tagline": { "type": "string" },
+        "theme": { "type": "string" },
+        "championSchool": { "type": "string" },
+        "championCounty": { "type": "string" },
+        "runnerUpSchool": { "type": "string" },
+        "runnerUpCounty": { "type": "string" },
+        "bestSpeaker": { "type": "string" },
+        "bestSpeakerSchool": { "type": "string" },
+        "totalSchools": { "type": "number" },
+        "totalCounties": { "type": "number" },
+        "finalMotion": { "type": "string" },
+        "finalScore": { "type": "string" },
+        "keyHighlights": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "summary": { "type": "string" },
+        "image": { "type": "string" },
+        "semiFinalists": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "notableMotions": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "status": { "type": "string", "enum": ["Completed", "Upcoming", "In Progress", "Archived"] },
+        "authorUid": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["year", "title", "theme", "createdAt"]
+    },
+    "leaders": {
+      "title": "Executive Leadership & Board Directory",
+      "description": "Real executive directors, officers, department heads, and board members managed by administrators",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "bio": { "type": "string" },
+        "county": { "type": "string" },
+        "image": { "type": "string" },
+        "social": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "department": { "type": "string" },
+        "order": { "type": "number" },
+        "featured": { "type": "boolean" },
+        "active": { "type": "boolean" },
+        "authorUid": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "role", "bio", "county", "createdAt"]
+    },
+    "alumni": {
+      "title": "Alumni Network Roster",
+      "description": "Registered alumni profiles from previous debate and STEM tournaments, subject to admin verification and approval",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "highSchool": { "type": "string" },
+        "county": { "type": "string" },
+        "graduationYear": { "type": "string" },
+        "tournamentYear": { "type": "string" },
+        "role": { "type": "string" },
+        "currentTitle": { "type": "string" },
+        "organizationOrUniversity": { "type": "string" },
+        "fieldOfWork": { "type": "string" },
+        "bio": { "type": "string" },
+        "photo": { "type": "string" },
+        "location": { "type": "string" },
+        "contactEmail": { "type": "string" },
+        "linkedIn": { "type": "string" },
+        "isMentorAvailable": { "type": "boolean" },
+        "achievements": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "adviceForDebaters": { "type": "string" },
+        "approved": { "type": "boolean" },
+        "status": { "type": "string", "enum": ["pending", "active", "rejected", "archived"] },
+        "videoUrl": { "type": "string" },
+        "videoDuration": { "type": "string" },
+        "videoDurationSeconds": { "type": "number" },
+        "videoPoster": { "type": "string" },
+        "authorUid": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "highSchool", "county", "createdAt"]
+    },
+    "testimonials": {
+      "title": "Alumni Stories & Video Testimonials",
+      "description": "Written and video testimonials submitted by alumni, reviewed and approved by administrators",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "highSchool": { "type": "string" },
+        "county": { "type": "string" },
+        "graduationYear": { "type": "string" },
+        "tournamentYear": { "type": "string" },
+        "role": { "type": "string" },
+        "currentTitle": { "type": "string" },
+        "organizationOrUniversity": { "type": "string" },
+        "fieldOfWork": { "type": "string" },
+        "headline": { "type": "string" },
+        "keyQuote": { "type": "string" },
+        "story": { "type": "string" },
+        "impactArea": { "type": "string" },
+        "photo": { "type": "string" },
+        "verified": { "type": "boolean" },
+        "featured": { "type": "boolean" },
+        "rating": { "type": "number" },
+        "adviceSnippet": { "type": "string" },
+        "videoUrl": { "type": "string" },
+        "videoDuration": { "type": "string" },
+        "videoDurationSeconds": { "type": "number" },
+        "videoPoster": { "type": "string" },
+        "likesCount": { "type": "number" },
+        "authorUid": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "keyQuote", "story", "createdAt"]
+    },
+    "subscribers": {
+      "title": "Newsletter & Dispatch Subscribers",
+      "description": "Subscribers to Youth For Change Liberia debate, STEM, and county qualifier dispatches",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "category": { "type": "string" },
+        "subscribedAt": { "type": "string" },
+        "source": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "unsubscribed"] },
+        "county": { "type": "string" },
+        "isMock": { "type": "boolean" },
+        "notes": { "type": "string" },
+        "authorUid": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["email", "category", "subscribedAt"]
+    },
+    "tournamentFixtures": {
+      "title": "Tournament Fixtures & Anti-Bias Draws",
+      "description": "Accredited debate and STEM fixtures, motions, venues, sides, and anti-bias verification hashes across Liberian county zones and national championships",
+      "type": "object",
+      "properties": {
+        "program": { "type": "string" },
+        "stage": { "type": "string" },
+        "roundName": { "type": "string" },
+        "county": { "type": "string" },
+        "zoneId": { "type": "string" },
+        "zoneName": { "type": "string" },
+        "teamA": { "type": "object" },
+        "teamB": { "type": "object" },
+        "motion": { "type": "string" },
+        "venue": { "type": "string" },
+        "matchDate": { "type": "string" },
+        "matchTime": { "type": "string" },
+        "status": { "type": "string" },
+        "isConfirmed": { "type": "boolean" },
+        "confirmedAt": { "type": "string" },
+        "confirmedBy": { "type": "string" },
+        "coachesNotifiedCount": { "type": "number" },
+        "notificationStatus": { "type": "string" },
+        "antiBiasHash": { "type": "string" },
+        "isPublished": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["program", "stage", "roundName", "county", "teamA", "teamB", "motion", "venue", "antiBiasHash"]
+    },
+    "coachRegistrations": {
+      "title": "Registered School Coaches & Alert Subscribers",
+      "description": "Registered debate and STEM coaches subscribing for automated fixture pairings, venue updates, and draw announcements",
+      "type": "object",
+      "properties": {
+        "schoolName": { "type": "string" },
+        "coachName": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "county": { "type": "string" },
+        "program": { "type": "string" },
+        "alertMethod": { "type": "string" },
+        "status": { "type": "string" },
+        "registeredAt": { "type": "string" }
+      },
+      "required": ["schoolName", "coachName", "email", "county"]
+    },
+    "coachNotificationLogs": {
+      "title": "Dispatched Coach Alert Logs",
+      "description": "Audit trail of automated email alerts dispatched to coaches when fixture pairings are officially confirmed",
+      "type": "object",
+      "properties": {
+        "fixtureId": { "type": "string" },
+        "roundName": { "type": "string" },
+        "county": { "type": "string" },
+        "schoolName": { "type": "string" },
+        "coachName": { "type": "string" },
+        "recipientEmail": { "type": "string" },
+        "matchDetails": { "type": "string" },
+        "subject": { "type": "string" },
+        "dispatchedAt": { "type": "string" },
+        "status": { "type": "string" },
+        "adminEmail": { "type": "string" },
+        "deliveryMode": { "type": "string" }
+      },
+      "required": ["fixtureId", "schoolName", "recipientEmail", "dispatchedAt", "status"]
+    },
+    "tournamentSettings": {
+      "title": "Tournament Public Settings & Reveal Announcement",
+      "description": "Public reveal dates, livestream channel, and broadcast settings for coaches and schools",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "revealDate": { "type": "string" },
+        "isRevealLive": { "type": "boolean" },
+        "announcementText": { "type": "string" },
+        "grandVenue": { "type": "string" }
+      }
+    },
+    "programStatuses": {
+      "title": "Program Registration Statuses & Access Control",
+      "description": "Admin-controlled open/closed registration switches, notice messages, and deadline settings for each YFC program",
+      "type": "object",
+      "properties": {
+        "programId": { "type": "string" },
+        "title": { "type": "string" },
+        "isOpen": { "type": "boolean" },
+        "statusLabel": { "type": "string" },
+        "closedNotice": { "type": "string" },
+        "openNotice": { "type": "string" },
+        "seasonYear": { "type": "string" },
+        "targetAudience": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "updatedBy": { "type": "string" }
+      },
+      "required": ["programId", "title", "isOpen"]
+    },
+    "motionBank": {
+      "title": "Debate Motion Bank",
+      "description": "Motions deposited by tournament administrators used for random impartial pairing and progression",
+      "type": "object",
+      "properties": {
+        "motionText": { "type": "string" },
+        "domain": { "type": "string" },
+        "infoSlide": { "type": "string" },
+        "preparationType": { "type": "string" },
+        "roundDesignation": { "type": "string" },
+        "addedBy": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["motionText", "domain", "roundDesignation"]
+    },
+    "tournamentArchives": {
+      "title": "Tournament Edition Archives & Backups",
+      "description": "Historical snapshots and full data backups of completed debate championship editions, including all matches, standings, awards, and schools",
+      "type": "object",
+      "properties": {
+        "editionKey": { "type": "string" },
+        "editionYear": { "type": "string" },
+        "editionTitle": { "type": "string" },
+        "championSchool": { "type": "string" },
+        "championCounty": { "type": "string" },
+        "runnerUpSchool": { "type": "string" },
+        "runnerUpCounty": { "type": "string" },
+        "bestSpeaker": { "type": "string" },
+        "finalScore": { "type": "string" },
+        "finalMotion": { "type": "string" },
+        "totalSchools": { "type": "number" },
+        "totalCounties": { "type": "number" },
+        "fixturesCount": { "type": "number" },
+        "standingsCount": { "type": "number" },
+        "archivedAt": { "type": "string" },
+        "archivedBy": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["editionKey", "editionYear", "editionTitle", "archivedAt"]
+    }
+  }
+}

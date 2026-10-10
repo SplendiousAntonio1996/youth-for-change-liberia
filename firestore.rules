@@ -1,0 +1,160 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Public read access for news stories, authenticated admins can create, update, delete
+    match /stories/{storyId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    // Public read access for uploaded documents, authenticated admins can create, update, delete
+    match /documents/{documentId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    // Admins collection: authenticated users can read/write their own record
+    match /admins/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Donations collection: supporters can record contributions; public/donors can read; authenticated staff can update/verify
+    match /donations/{donationId} {
+      allow read: if true;
+      allow create: if request.resource.data.amount is number 
+                    && request.resource.data.amount > 0
+                    && request.resource.data.currency is string
+                    && request.resource.data.program is string
+                    && request.resource.data.paymentMethod is string;
+      allow update, delete: if isAuthenticated();
+    }
+
+    // STEM Challenges: Public read, authenticated admins can create, update, delete
+    match /stemChallenges/{challengeId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    // Student STEM Project Proposals: Public submit, authenticated admins can read, update, delete
+    match /stemProposals/{proposalId} {
+      allow read: if true;
+      allow create: if request.resource.data.title is string
+                    && request.resource.data.school is string
+                    && request.resource.data.county is string
+                    && request.resource.data.teamLead is string;
+      allow update, delete: if isAuthenticated();
+    }
+
+    // Media Gallery & Key Events (Photos, Videos, Events): Public read, authenticated admins can create, update, delete
+    match /galleryItems/{itemId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    // Get Involved Applications (Schools, Student Scholars, Volunteers/Judges, Sponsors, Partners)
+    match /involvementApplications/{applicationId} {
+      allow read: if true;
+      allow create: if request.resource.data.type is string
+                    && request.resource.data.name is string
+                    && request.resource.data.email is string
+                    && request.resource.data.phone is string
+                    && request.resource.data.county is string;
+      allow update, delete: if isAuthenticated();
+    }
+
+    // Official Strategic Partners & Endorsers: Public read, authenticated admins can create, update, delete
+    match /partners/{partnerId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    // National Debate Championship Editions: Public read, authenticated admins can create, update, delete
+    match /debateEditions/{editionId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    // Leadership Team Directorate & Executive Council: Public read, authenticated admins can create, update, delete
+    match /leaders/{leaderId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    // Alumni Network Roster: Public read, public submit with required fields, authenticated admins can update/approve/delete
+    match /alumni/{alumniId} {
+      allow read: if true;
+      allow create: if request.resource.data.name is string
+                    && request.resource.data.highSchool is string;
+      allow update, delete: if isAuthenticated();
+    }
+
+    // Alumni Testimonials & Video Stories: Public read, public submit, authenticated admins can update/approve/delete
+    match /testimonials/{testimonialId} {
+      allow read: if true;
+      allow create: if request.resource.data.name is string
+                    && request.resource.data.story is string;
+      allow update, delete: if isAuthenticated();
+    }
+
+    // Newsletter & Dispatch Subscribers: Public subscribe, authenticated admins can read, update, delete
+    match /subscribers/{subscriberId} {
+      allow read: if true;
+      allow create: if request.resource.data.email is string
+                    && request.resource.data.category is string;
+      allow update, delete: if isAuthenticated();
+    }
+
+    // Tournament Fixtures & Anti-Bias Draws: Public read, authenticated admins can create, update, delete
+    match /tournamentFixtures/{fixtureId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    // Registered School Coaches & Alert Subscribers: Public can register, authenticated admins can read, update, delete
+    match /coachRegistrations/{coachId} {
+      allow read: if true;
+      allow create: if request.resource.data.schoolName is string
+                    && request.resource.data.coachName is string
+                    && request.resource.data.email is string;
+      allow update, delete: if isAuthenticated();
+    }
+
+    // Dispatched Coach Alert Logs: Public read, authenticated admins can create, update, delete
+    match /coachNotificationLogs/{logId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    // Tournament Settings & Reveal Announcement: Public read, authenticated admins can create, update, delete
+    match /tournamentSettings/{settingId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    // Program Registration Statuses & Access Control: Public read, authenticated admins can create, update, delete
+    match /programStatuses/{programId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    // Debate Motion Bank: Public read, authenticated admins can create, update, delete
+    match /motionBank/{motionId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    // Tournament Edition Archives & Historical Snapshots: Public read, authenticated admins can create, update, delete
+    match /tournamentArchives/{archiveId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+  }
+}
+

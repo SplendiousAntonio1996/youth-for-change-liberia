@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+.font-condensed {
+  font-family: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: -0.015em;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes slowSlideLeft {
+  0% {
+    transform: scale(1.06) translateX(2%);
+  }
+  50% {
+    transform: scale(1.1) translateX(-12%);
+  }
+  100% {
+    transform: scale(1.06) translateX(2%);
+  }
+}
+
+.animate-slide-slow-left {
+  animation: slowSlideLeft 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 0 0 7px #10b981, 0 0 14px #10b981, 0 0 28px #059669, 0 0 42px #047857;
+  }
+  50% {
+    text-shadow: 0 0 10px #34d399, 0 0 20px #10b981, 0 0 35px #059669, 0 0 50px #047857, 0 0 70px #065f46;
+  }
+}
+
+.text-neon-emerald {
+  color: #ffffff;
+  text-shadow: 0 0 8px #34d399, 0 0 16px #10b981, 0 0 30px #059669, 0 0 45px #047857;
+}
+
+.text-neon-typing {
+  animation: neonPulse 1.8s ease-in-out infinite;
+}
+
+.neon-cursor-glow {
+  box-shadow: 0 0 8px #34d399, 0 0 16px #10b981, 0 0 24px #059669;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 37%, #f1f5f9 63%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+.skeleton-shimmer-dark {
+  background: linear-gradient(90deg, #064e3b 25%, #047857 37%, #064e3b 63%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+/* Subtle View Entrance Fade-in Animation for Fluid Tab Transitions */
+@keyframes viewFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.998);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-view-fade-in {
+  animation: viewFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
+}
+
+/* Smooth page/section transitions */
+.smooth-transition {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-view-fade-in,
+  .animate-fade-in {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="100" fill="#064e3b"/>
+  <circle cx="256" cy="256" r="210" stroke="#facc15" stroke-width="8" opacity="0.4"/>
+  <path d="M256 90 L390 150 V270 C390 350 256 420 256 420 C256 420 122 350 122 270 V150 Z" fill="#047857" stroke="#facc15" stroke-width="12"/>
+  <!-- Trophy icon -->
+  <path d="M200 170 H312 V240 C312 270 288 290 256 290 C224 290 200 270 200 240 Z" fill="#facc15"/>
+  <path d="M200 190 H170 C160 190 150 200 150 215 C150 235 170 250 200 250 V230 C180 230 170 220 170 215 C170 210 175 206 180 206 H200 Z" fill="#facc15"/>
+  <path d="M312 190 H342 C352 190 362 200 362 215 C362 235 342 250 312 250 V230 C332 230 342 220 342 215 C342 210 337 206 332 206 H312 Z" fill="#facc15"/>
+  <rect x="244" y="290" width="24" height="40" fill="#facc15"/>
+  <rect x="210" y="330" width="92" height="20" rx="6" fill="#facc15"/>
+  <!-- Star -->
+  <polygon points="256,200 262,216 279,216 265,226 270,242 256,232 242,242 247,226 233,216 250,216" fill="#064e3b"/>
+  <text x="256" y="385" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="28" font-weight="900" letter-spacing="3">YFC LIBERIA</text>
+</svg>
