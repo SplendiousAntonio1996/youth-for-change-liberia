@@ -140,7 +140,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         {/* Real photo overlay in balanced opacity so the new background cover shows through clearly */}
         <div 
           className="absolute inset-0 bg-cover bg-[center_30%] opacity-65 scale-100 pointer-events-none transition-all duration-700"
-          style={{ backgroundImage: `url('/mission.jpeg')` }}
+          style={{ backgroundImage: `url('/YOUTH.jpeg')` }}
         />
         {/* Soft translucent green gradient wash allowing background cover to show */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#063d2e]/80 via-[#063d2e]/55 to-[#063d2e]/30 pointer-events-none" />
